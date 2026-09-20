@@ -1,23 +1,25 @@
-# FeralCat — MeowKit‑S3 custom firmware (by FeralDevs)
+# FeralCat — MeowKit-S3 custom firmware
 
 [![Discord](https://img.shields.io/badge/Discord-join%20the%20community-5865F2?logo=discord&logoColor=white)](https://discord.gg/BQkmxPj9Me)
 
-💬 **Community & support:** [discord.gg/BQkmxPj9Me](https://discord.gg/BQkmxPj9Me)
+**FeralCat v0.11.1** is community firmware for the **MeowKit-S3 (ESP32-S3)**.
+It fixes retail-hardware boot issues, improves the stock UI, and adds signed
+native apps for WiFi/BLE diagnostics, media playback, scripting, and firmware
+updates. It is based on
+[`mingolucky/meowkit-s3-firmware`](https://github.com/mingolucky/meowkit-s3-firmware).
 
-**FeralCat v0.11.1** is the current build: adds an opt‑in **sleep mode** (idle or a
-single power‑button press turns the screen off and light‑sleeps instead of powering
-off — press any button, including power, to wake) and a **proximity radar** in
-Tracker Detect. On top of signed **native ELF apps** loaded from
-the SD card through a stable app SDK, the firmware updater as a system module,
-a red UI theme, and the FeralCat rebrand — plus v0.9.0's Lua platform and
-MP3 player. Six security tools (WiFi Analyzer, Deauth Detect, Rogue Radar, BLE
-Spam Detect, Probe Sniffer, Tracker Detect) now ship as **signed SD apps** in
-`sd files/apps`; copy them onto the card after flashing.
+Highlights:
 
-Custom, community firmware for the **MeowKit‑S3** (ESP32‑S3) pocket multi‑tool.
-It fixes the boot bugs that stop the open‑source firmware from running on retail
-hardware, repairs several half‑finished stock UI elements, and fills the empty
-app slots with working WiFi/BLE security tools.
+- Six signed SD-card apps: WiFi Analyzer, Deauth Detect, Rogue Radar, BLE Spam
+  Detect, Probe Sniffer, and Tracker Detect.
+- MeowGotchi WiFi hunter, MeowPlayer MP3 playback, Berry scripts, and optional
+  Lua apps.
+- Dual-OTA updates from SD card or WiFi, plus USB recovery/download mode.
+- Opt-in sleep mode and Tracker Detect proximity radar (relative signal strength;
+  it does not provide distance or bearing).
+- Docker-based builds and desktop simulators; no host toolchain is required.
+
+Community support: [join Discord](https://discord.gg/BQkmxPj9Me).
 
 > ## ⚠️ Experimental / testing firmware — flash at your own risk
 > This is **unofficial, experimental testing firmware**. You flash it to your
@@ -39,11 +41,13 @@ app slots with working WiFi/BLE security tools.
 
 ---
 
-## What this is
+## Documentation
 
-Based on the open‑source [`mingolucky/meowkit-s3-firmware`](https://github.com/mingolucky/meowkit-s3-firmware).
-Built entirely in Docker (nothing installed on the host). Full technical guide:
-**[`docs/CUSTOM-FIRMWARE.md`](docs/CUSTOM-FIRMWARE.md)**.
+- [Custom firmware build guide](docs/CUSTOM-FIRMWARE.md)
+- [SD-card update guide](docs/SD-UPDATE.md)
+- [Berry scripting guide](docs/SCRIPTING.md)
+- [Native app signing tools](tools/app_signing/)
+- [Desktop simulator](sim/README.md)
 
 ## Screenshots
 
@@ -63,10 +67,11 @@ Built entirely in Docker (nothing installed on the host). Full technical guide:
 
 ## Download & flash
 
-Two artifacts in [`releases/`](releases/) (checksums in
-[`SHA256SUMS.txt`](releases/SHA256SUMS.txt)):
+Release artifacts are in [`releases/`](releases/); checksums are in
+[`releases/SHA256SUMS.txt`](releases/SHA256SUMS.txt):
 - **`feralcat-OTA-merged-0x0.bin`** — the complete image, flashed **once** over USB.
 - **`firmware.bin`** — the app image used for **SD‑card updates** afterwards.
+- **`feralcat-apps-v0.11.1.zip`** — packaged SD-card apps.
 
 **First time (USB):**
 1. Enter download mode — open **Firmware → USB Download Mode → A**, or power off,
